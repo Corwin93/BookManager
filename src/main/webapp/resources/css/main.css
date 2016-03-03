@@ -1,0 +1,13 @@
+td, th {
+    padding: 10px;
+}
+.lobster-title {
+    color: blue;
+    font-family: Lobster,sans-serif;
+}
+.book-table {
+    border: 2px solid darkgreen;
+}
+.error {
+    color: red;
+}

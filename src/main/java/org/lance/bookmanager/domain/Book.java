@@ -26,22 +26,22 @@ public class Book {
     @Column(name = "publisher")
     private String publisher;
     @Column(name = "language")
-    private Language language;
+    private String language;
     @Column(name = "genre")
-    private Genre genre;
+    private String genre;
     @Column(name = "number_of_pages")
-    private int numberOfPages;
+    private Integer numberOfPages;
     @Column(name = "publish_year")
-    private int publishYear;
+    private Integer publishYear;
     @Column(name = "price")
-    private int price;
+    private Integer price;
     @Column(name = "purchases")
-    private int purchases;
+    private Integer purchases;
 
     public Book() {
     }
 
-    public Book(String title, String author, String isbn, Language language, Genre genre, Integer id, int numberOfPages, int publishYear, int price, int purchases, String annotation, String publisher) {
+    public Book(String title, String author, String isbn, String language, String genre, Integer numberOfPages, Integer publishYear, Integer price, Integer purchases, String annotation, String publisher) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -49,13 +49,14 @@ public class Book {
         this.publisher = publisher;
         this.language = language;
         this.genre = genre;
-        this.id = id;
         this.numberOfPages = numberOfPages;
         this.publishYear = publishYear;
         this.price = price;
         this.purchases = purchases;
     }
-
+    public Book(String title) {
+        this.title = title;
+    }
     public String getAnnotation() {
         return annotation;
     }
@@ -72,19 +73,19 @@ public class Book {
         this.publisher = publisher;
     }
 
-    public int getPurchases() {
+    public Integer getPurchases() {
         return purchases;
     }
 
-    public void setPurchases(int purchases) {
+    public void setPurchases(Integer purchases) {
         this.purchases = purchases;
     }
 
     public String getLanguage() {
-        return language.getValue();
+        return language;
     }
 
-    public void setLanguage(Language language) {
+    public void setLanguage(String language) {
         this.language = language;
     }
 
@@ -96,27 +97,27 @@ public class Book {
         this.id = id;
     }
 
-    public int getNumberOfPages() {
+    public Integer getNumberOfPages() {
         return numberOfPages;
     }
 
-    public void setNumberOfPages(int numberOfPages) {
+    public void setNumberOfPages(Integer numberOfPages) {
         this.numberOfPages = numberOfPages;
     }
 
-    public int getPublishYear() {
+    public Integer getPublishYear() {
         return publishYear;
     }
 
-    public void setPublishYear(int publishYear) {
+    public void setPublishYear(Integer publishYear) {
         this.publishYear = publishYear;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -145,10 +146,10 @@ public class Book {
     }
 
     public String getGenre() {
-        return genre.getValue();
+        return genre;
     }
 
-    public void setGenre(Genre genre) {
+    public void setGenre(String genre) {
         this.genre = genre;
     }
 }
