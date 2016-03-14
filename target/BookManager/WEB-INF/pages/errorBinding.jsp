@@ -18,7 +18,7 @@
 <body>
 <div>
     <p class="error-message"><b>Ошибка при связывании</b></p>
-    <a href="/index"><button class="btn btn-primary">Go back to home page</button></a>
+    <a href="/"><button class="btn btn-primary">Go back to home page</button></a>
 </div>
 </body>
 </html>

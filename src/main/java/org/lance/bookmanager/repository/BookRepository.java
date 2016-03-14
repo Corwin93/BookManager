@@ -22,11 +22,12 @@ public class BookRepository {
     }
 
     public List<Book> listAll() {
-        return this.sessionFactory.getCurrentSession().createQuery("from Book").list();
+        return this.sessionFactory.getCurrentSession()
+                                  .createQuery("from Book").list();
     }
 
-    public List<Book> listAllByPurchases() {
-        return this.sessionFactory.getCurrentSession().createQuery("from Book").list();
+    public List<Book> listAllByPurchases(Integer number) {
+        return this.sessionFactory.getCurrentSession().createQuery("from Book order by purchases desc").setMaxResults(number).list();
     }
 
     public void removeBook(Integer id) {

@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
-<t:template>
+<t:adminPage>
     <form:form action="/addbook" method="post" modelAttribute="newBook">
         <table>
             <tr>
@@ -79,4 +79,4 @@
             </tr>
         </table>
     </form:form>
-</t:template>
+</t:adminPage>

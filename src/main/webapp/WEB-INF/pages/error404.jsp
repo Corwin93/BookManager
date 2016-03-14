@@ -21,7 +21,7 @@
 <body>
 <div>
     <p class="error-message"><b>404 подъехала</b></p>
-    <a href="/index"><button class="btn btn-primary">Go back to home page</button></a>
+    <a href="/"><button class="btn btn-primary">Go back to home page</button></a>
 </div>
 </body>
 </html>

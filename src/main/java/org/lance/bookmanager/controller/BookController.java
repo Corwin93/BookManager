@@ -28,8 +28,10 @@ public class BookController {
     @BookValidation
     private Validator bookValidator;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String indexPage(Model model) {
+        List<Book> books = bookRepository.listAllByPurchases(Integer.valueOf(4));
+        model.addAttribute("books", books);
         return "index";
     }
 
@@ -37,8 +39,9 @@ public class BookController {
     public String listBooks(Model model) {
         List<Book> books = bookRepository.listAll();
         model.addAttribute("books", books);
-        return "db-admin";
+        return "listBooks";
     }
+
     @RequestMapping(value = "/addbook", method = RequestMethod.GET)
     public String addBook(Model model) {
         model.addAttribute("newBook", new Book());
@@ -50,12 +53,12 @@ public class BookController {
         this.bookValidator.validate(book, result);
         if(result.hasErrors()) return "/addBook";
         this.bookRepository.addBook(book);
-        return "redirect:/index";
+        return "redirect:/listBooks";
     }
 
     @RequestMapping(value = "/deletebook/{id}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable Integer id) {
         this.bookRepository.removeBook(id);
-        return "redirect:/index";
+        return "redirect:/listBooks";
     }
 }
