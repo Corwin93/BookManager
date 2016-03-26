@@ -91,7 +91,7 @@
                 </c:if>
                 <div class="templatemo_product_box">
                     <h1><c:out value="${book.title}"/></h1>
-                    <img src="<c:url value="/resources/images/${book.id}.jpg"/>" alt="image" />
+                    <img height="64px" width="64px" src="<c:url value="/resources/images/${book.id}.jpg"/>" alt="image" />
                     <div class="product_info">
                         <p>${annotation}</p>
                         <h3>$${book.price}</h3>

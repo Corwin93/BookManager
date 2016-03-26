@@ -1,0 +1,12 @@
+org\lance\bookmanager\controller\HelloController.class
+org\lance\bookmanager\config\SpringWebConfig.class
+org\lance\bookmanager\config\BookManagerWebAppInitializer.class
+org\lance\bookmanager\controller\BookController.class
+org\lance\bookmanager\desktop\DesktopManager.class
+org\lance\bookmanager\config\SpringAppConfig.class
+org\lance\bookmanager\annotation\BookValidation.class
+org\lance\bookmanager\enumerator\Genre.class
+org\lance\bookmanager\validator\BookValidator.class
+org\lance\bookmanager\entity\Book.class
+org\lance\bookmanager\enumerator\Language.class
+org\lance\bookmanager\repository\BookRepository.class

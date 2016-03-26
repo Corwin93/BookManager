@@ -1,7 +1,7 @@
 package org.lance.bookmanager.controller;
 
 import org.lance.bookmanager.annotation.BookValidation;
-import org.lance.bookmanager.domain.Book;
+import org.lance.bookmanager.entity.Book;
 import org.lance.bookmanager.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ public class BookController {
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String indexPage(Model model) {
-        List<Book> books = bookRepository.listAllByPurchases(Integer.valueOf(4));
+        List books = bookRepository.listAllByPurchases(4);
         model.addAttribute("books", books);
         return "index";
     }

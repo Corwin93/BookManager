@@ -1,7 +1,7 @@
 package org.lance.bookmanager.validator;
 
 import org.lance.bookmanager.annotation.BookValidation;
-import org.lance.bookmanager.domain.Book;
+import org.lance.bookmanager.entity.Book;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
