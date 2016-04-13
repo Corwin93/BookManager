@@ -1,18 +1,19 @@
 package org.lance.bookmanager.config;
 
 import org.hibernate.SessionFactory;
+import org.lance.bookmanager.aspect.ServerLogAspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 /**
@@ -21,12 +22,24 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 @ComponentScan(basePackages = {"org.lance.bookmanager.*"}, excludeFilters = {@ComponentScan.Filter(type = FilterType.ANNOTATION, value = EnableWebMvc.class)})
 @PropertySource("classpath:jdbc.properties")
 public class SpringAppConfig {
 
     @Autowired
     private Environment env;
+    public static final String serverLogFilePath = "E:\\serverLog.log";
+
+    @Bean
+    public Path filePath() {
+        return Paths.get(serverLogFilePath);
+    }
+
+    @Bean
+    public ServerLogAspect serverLogAspect() {
+        return new ServerLogAspect();
+    }
 
     //Database connection beans
     @Bean(name = "transactionManager")
@@ -42,7 +55,7 @@ public class SpringAppConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
-        sessionFactoryBean.setPackagesToScan(new String[]{"org.lance.bookmanager.entity"});
+        sessionFactoryBean.setPackagesToScan("org.lance.bookmanager.entity");
         sessionFactoryBean.setHibernateProperties(hibernateProperties());
         return sessionFactoryBean;
     }

@@ -53,6 +53,7 @@ public class Book {
         this.purchases = purchases;
     }
     public Book(String title) {
+        this.id = 0;
         this.title = title;
     }
     public String getAnnotation() {

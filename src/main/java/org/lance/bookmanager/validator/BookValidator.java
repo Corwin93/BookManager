@@ -14,6 +14,8 @@ import org.springframework.validation.Validator;
 @Component
 @BookValidation
 public class BookValidator implements Validator {
+    public static final String AUTHOR_REGEX = "[a-zA-Zà-ÿÀ-ß'., ]+";
+
     public BookValidator() {
         super();
     }
@@ -25,6 +27,10 @@ public class BookValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "required.name", "Title mustn't be empty!");
+        Book book = (Book)o;
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "required.name", "Title field mustn't be empty!");
+        if(!book.getAuthor().matches(AUTHOR_REGEX))
+            errors.rejectValue("author", "regex.failed", "Author contains prohibited symbols");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "author", "required.name", "Author field mustn't be empty");
     }
 }

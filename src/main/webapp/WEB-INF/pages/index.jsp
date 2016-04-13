@@ -48,6 +48,7 @@
         <div id="templatemo_content_left">
             <div class="templatemo_content_left_section">
                 <h1>Categories</h1>
+                <!--TODO-->
                 <ul>
                     <li><a href="subpage.html">Donec accumsan urna</a></li>
                     <li><a href="subpage.html">Proin vulputate justo</a></li>
@@ -91,12 +92,12 @@
                 </c:if>
                 <div class="templatemo_product_box">
                     <h1><c:out value="${book.title}"/></h1>
-                    <img height="64px" width="64px" src="<c:url value="/resources/images/${book.id}.jpg"/>" alt="image" />
+                    <img height="128px" width="80px" src="<c:url value="/resources/images/${book.id}.jpg"/>" alt="image" />
                     <div class="product_info">
                         <p>${annotation}</p>
                         <h3>$${book.price}</h3>
-                        <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
-                        <div class="detail_button"><a href="subpage.html">Detail</a></div>
+                        <div class="buy_now_button"><a href="subpage.html">Buy</a></div>
+                        <div class="detail_button"><a href="/${book.id}">Details</a></div>
                     </div>
                     <div class="cleaner">&nbsp;</div>
                 </div>
@@ -107,68 +108,6 @@
 
         <div class="cleaner_with_height">&nbsp;</div>
     </div>
-            <%--<div class="templatemo_product_box">
-                <h1>Photography  <span>(by Best Author)</span></h1>
-                <img src="<c:url value="/resources/images/1.jpg"/>" alt="image" />
-                <div class="product_info">
-                    <p>Etiam luctus. Quisque facilisis suscipit elit. Curabitur...</p>
-                    <h3>$55</h3>
-                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
-                    <div class="detail_button"><a href="subpage.html">Detail</a></div>
-                </div>
-                <div class="cleaner">&nbsp;</div>
-            </div>
-
-            <div class="cleaner_with_width">&nbsp;</div>
-
-            <div class="templatemo_product_box">
-                <h1>Cooking  <span>(by New Author)</span></h1>
-                <img src="<c:url value="/resources/images/2.jpg"/>" alt="image" />
-                <div class="product_info">
-                    <p>Aliquam a dui, ac magna quis est eleifend dictum.</p>
-                    <h3>$35</h3>
-                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
-                    <div class="detail_button"><a href="subpage.html">Detail</a></div>
-                </div>
-                <div class="cleaner">&nbsp;</div>
-            </div>
-
-            <div class="cleaner_with_height">&nbsp;</div>
-
-            <div class="templatemo_product_box">
-                <h1>Gardening <span>(by Famous Author)</span></h1>
-                <img src="<c:url value="/resources/images/3.jpg"/>" alt="image" />
-                <div class="product_info">
-                    <p>Ut fringilla enim sed turpis. Sed justo dolor, convallis at.</p>
-                    <h3>$65</h3>
-                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
-                    <div class="detail_button"><a href="subpage.html">Detail</a></div>
-                </div>
-                <div class="cleaner">&nbsp;</div>
-            </div>
-
-            <div class="cleaner_with_width">&nbsp;</div>
-
-            <div class="templatemo_product_box">
-                <h1>Sushi Book  <span>(by Japanese Name)</span></h1>
-                <img src="<c:url value="/resources/images/4.jpg"/>" alt="image" />
-                <div class="product_info">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                    <h3>$45</h3>
-                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
-                    <div class="detail_button"><a href="subpage.html">Detail</a></div>
-                </div>
-                <div class="cleaner">&nbsp;</div>
-            </div>
-
-            <div class="cleaner_with_height">&nbsp;</div>
-
-            <a href="subpage.html"><img src="<c:url value="/resources/images/templatemo_ads.jpg"/>" alt="ads" /></a>
-        </div> <!-- end of content right -->
-
-        <div class="cleaner_with_height">&nbsp;</div>
-    </div>--%> <!-- end of content -->
-
     <div id="templatemo_footer">
 
         <a href="subpage.html">Home</a> | <a href="subpage.html">Search</a> | <a href="subpage.html">Books</a> | <a href="#">New Releases</a> | <a href="#">FAQs</a> | <a href="#">Contact Us</a><br />
