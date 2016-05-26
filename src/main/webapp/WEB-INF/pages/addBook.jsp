@@ -5,7 +5,7 @@
 <t:adminPage>
     <form:form method="POST" commandName="newBook">
         <form:errors cssClass="error" path="*" element="div"/>
-        <table>
+        <table>  
             <tr>
                 <td><form:label path="title" cssErrorClass="error">
                     title
