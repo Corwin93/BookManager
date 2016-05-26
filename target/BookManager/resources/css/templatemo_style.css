@@ -91,7 +91,7 @@ img {
 #templatemo_menu {
 	clear: both;
 	width: 960px;
-	height: 45px;
+	height: 95px;
 	background: url(../images/templatemo_menu_bg.jpg) no-repeat;
 }
 
@@ -238,7 +238,7 @@ img {
 #templatemo_content_right .templatemo_product_box {
 	float: left;
 	width: 303px;
-	height: 210px;
+    height: 210px;
 	padding: 10px;
 	border: 1px solid #333;
 }

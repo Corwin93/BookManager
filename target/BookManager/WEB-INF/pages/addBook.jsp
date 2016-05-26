@@ -2,6 +2,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <t:adminPage>
     <form:form method="POST" commandName="newBook">
@@ -12,7 +13,6 @@
                     title
                 </form:label></td>
                 <td><form:input path="title" cssErrorClass="error"/></td>
-                <td class="error">
             </tr>
             <tr>
                 <td><form:label path="author" cssErrorClass="error">
@@ -80,4 +80,5 @@
             </tr>
         </table>
     </form:form>
+    <p><s:message code="author.empty"/>
 </t:adminPage>

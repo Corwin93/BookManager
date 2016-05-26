@@ -8,6 +8,9 @@ td, th {
 .book-table {
     border: 2px solid darkgreen;
 }
+.user-table {
+    border: 2px solid darkblue;
+}
 div.error {
     color: red;
 }
@@ -16,4 +19,17 @@ label.error {
 }
 input.error {
     background-color: #ffcccc;
+}
+input {
+    color: #111111;
+}
+.login-form {
+    padding-top: 40px;
+}
+.login-table {
+    border-collapse: separate;
+    border-spacing: 5px 0px;
+}
+td {
+    padding: 2px 0px;
 }

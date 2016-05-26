@@ -37,6 +37,21 @@ public class FileLogger implements Logger {
         Files.write(filePath, message.getBytes(), StandardOpenOption.APPEND);
     }
 
+    @Override
+    public void logAdminPageRequested(String ip, String Uri, Boolean accessed) throws IOException {
+        String currentTime = new Date().toString();
+        String response = accessed ? "allowed" : "denied";
+        String message = currentTime
+                + ": Client "
+                + ip
+                + " tried to access "
+                + Uri
+                + ". Access: "
+                + response
+                + "\n";
+        Files.write(filePath, message.getBytes(), StandardOpenOption.APPEND);
+    }
+
     @Autowired
     public void setFilePath(Path filePath) {
         this.filePath = filePath;

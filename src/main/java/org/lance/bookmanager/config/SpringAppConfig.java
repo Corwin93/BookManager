@@ -3,17 +3,23 @@ package org.lance.bookmanager.config;
 import org.hibernate.SessionFactory;
 import org.lance.bookmanager.aspect.ServerLogAspect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Locale;
 import java.util.Properties;
 
 /**
@@ -41,6 +47,24 @@ public class SpringAppConfig {
         return new ServerLogAspect();
     }
 
+
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource source = new ReloadableResourceBundleMessageSource();
+        source.setBasename("classpath:validationMessages");
+        source.setDefaultEncoding("windows-1251");
+        return source;
+    }
+
+    @Bean
+    public LocaleResolver localeResolver() {
+        CookieLocaleResolver resolver = new CookieLocaleResolver();
+        resolver.setDefaultLocale(Locale.ENGLISH);
+        resolver.setCookieName("myLocaleCookie");
+        resolver.setCookieMaxAge(4800);
+        return resolver;
+    }
+
     //Database connection beans
     @Bean(name = "transactionManager")
     @Autowired
@@ -51,7 +75,7 @@ public class SpringAppConfig {
         return txManager;
     }
 
-    @Bean(name = "sessionFactory")
+    @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
@@ -60,20 +84,21 @@ public class SpringAppConfig {
         return sessionFactoryBean;
     }
 
-    @Bean(name = "dataSource")
+
+    @Bean
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(env.getRequiredProperty("jdbc.driverClassName"));
-        dataSource.setUrl(env.getRequiredProperty("jdbc.databaseUrl"));
-        dataSource.setUsername(env.getRequiredProperty("jdbc.username"));
-        dataSource.setPassword(env.getRequiredProperty("jdbc.password"));
+        dataSource.setDriverClassName(env.getRequiredProperty("mysql.driverClassName"));
+        dataSource.setUrl(env.getRequiredProperty("mysql.databaseUrl"));
+        dataSource.setUsername(env.getRequiredProperty("mysql.username"));
+        dataSource.setPassword(env.getRequiredProperty("mysql.password"));
         return dataSource;
     }
 
     private Properties hibernateProperties() {
         Properties props = new Properties();
         props.setProperty("hibernate.show_sql", "true");
-        props.setProperty("hibernate.dialect", env.getRequiredProperty("jdbc.dialect"));
+        props.setProperty("hibernate.dialect", env.getRequiredProperty("mysql.dialect"));
         return props;
     }
 

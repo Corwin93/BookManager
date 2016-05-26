@@ -10,4 +10,5 @@ import java.io.IOException;
 public interface Logger {
     void logBookObserved(Book book) throws IOException;
     void log(String message) throws IOException;
+    void logAdminPageRequested(String ip, String Uri, Boolean accessed) throws IOException;
 }

@@ -17,12 +17,12 @@
                     <td>${book.author}</td>
                     <td>${book.genre}</td>
                     <td>
-                        <a href="javascript:BookUtil.deleteBook(${book.id})"><button class="btn btn-danger">Delete</button></a>
+                        <a href="<c:url value="javascript:BookUtil.deleteBook(${book.id})"/>"><button class="btn btn-danger">Delete</button></a>
                     </td>
                 </tr>
             </c:forEach>
         </table>
     </c:if>
     <br>
-    <p><a href="/addbook"><button class="btn btn-info">Add a book</button></a></p>
+    <p><a href="<c:url value="/addBook"/>"><button class="btn btn-info">Add a book</button></a></p>
 </t:adminPage>

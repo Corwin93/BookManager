@@ -27,4 +27,19 @@ public class ConsoleLogger implements Logger {
     public void log(String message) throws IOException {
         System.out.println(message);
     }
+
+    @Override
+    public void logAdminPageRequested(String ip, String Uri, Boolean accessed) throws IOException {
+        String currentTime = new Date().toString();
+        String response = accessed ? "allow" : "denied";
+        String message = currentTime
+                + ": Client "
+                + ip
+                + " tried to access "
+                + Uri
+                + ". Access: "
+                + response
+                + "\n";
+        System.out.println(message);
+    }
 }

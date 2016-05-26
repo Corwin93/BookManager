@@ -8,7 +8,7 @@ import org.lance.bookmanager.annotation.FileLog;
 import org.lance.bookmanager.entity.Book;
 import org.lance.bookmanager.logger.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by Corwin on 10.04.2016.
@@ -20,9 +20,14 @@ public class ServerLogAspect {
     @FileLog
     Logger logger;
 
-    @Pointcut("execution(* org.lance.bookmanager.repository.BookRepository.getById(Integer))" +
+    @Pointcut("execution(* org.lance.bookmanager.repository.BookRepository.getBookById(Integer))" +
             "&& args(bookId)")
     public void bookObserved(Integer bookId) {}
+
+    @Pointcut("execution" +
+            "(* org.lance.bookmanager.controller.BookController.checkIp(javax.servlet.http.HttpServletRequest))" +
+            "&& args(request)")
+    public void adminPageRequested(HttpServletRequest request) {}
 
     @Around(value = "bookObserved(bookId)", argNames = "jp, bookId")
     public Book aroundBookObserved(ProceedingJoinPoint jp, Integer bookId) {
@@ -34,5 +39,17 @@ public class ServerLogAspect {
             throwable.printStackTrace();
         }
         return bookObserved;
+    }
+
+    @Around(value = "adminPageRequested(request)", argNames = "jp, request")
+    public Boolean aroundAdminPageRequested(ProceedingJoinPoint jp, HttpServletRequest request) {
+        Boolean result = null;
+        try {
+            result = (Boolean)jp.proceed();
+            logger.logAdminPageRequested(request.getRemoteAddr(), request.getRequestURI(), result);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        return result;
     }
 }

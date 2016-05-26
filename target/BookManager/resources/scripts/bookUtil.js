@@ -2,7 +2,7 @@ function _BookUtil() {
 
     this.deleteBook = function(id) {
         if (confirm("Are you sure?")) {
-            window.location = "/deletebook/" + id;
+            window.location = "/deleteBook/" + id;
         }
     }
 }

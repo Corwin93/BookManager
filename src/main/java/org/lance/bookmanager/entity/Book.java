@@ -52,9 +52,9 @@ public class Book {
         this.price = price;
         this.purchases = purchases;
     }
-    public Book(String title) {
-        this.id = 0;
+    public Book(String title, String author) {
         this.title = title;
+        this.author = author;
     }
     public String getAnnotation() {
         return annotation;
