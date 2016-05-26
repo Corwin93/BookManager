@@ -12,7 +12,7 @@
                 </form:label></td>
                 <td><form:input path="title" cssErrorClass="error"/></td>
             </tr>
-            <tr> 
+            <tr>
                 <td><form:label path="author" cssErrorClass="error">
                     author
                 </form:label></td>

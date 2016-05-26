@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" build-on-make="true" name="BookManager:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="BookManager.war">
+    <root id="archive" name="ROOT.war">
       <element id="artifact" artifact-name="BookManager:war exploded" />
     </root>
   </artifact>

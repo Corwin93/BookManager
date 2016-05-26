@@ -1,8 +1,6 @@
 <%--suppress ALL --%>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@page contentType="text/html;charset=UTF-8" language="java" %>
 <t:adminPage>
     <form:form method="POST" commandName="newBook">
@@ -80,5 +78,4 @@
             </tr>
         </table>
     </form:form>
-    <p><s:message code="author.empty"/>
 </t:adminPage>
